@@ -4,26 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DaoYuan | CampusJarvis</title>
-  <meta name="description" content="DaoYuan 是 CampusJarvis 的 GitHub Pages 首页，展示 decision、data_clean 与 if_land_web-fusion 三块核心代码。">
+  <meta name="description" content="DaoYuan 是 CampusJarvis 的展示型首页，用更轻的方式呈现项目愿景与入口。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5efe4;
-      --bg-soft: #fbf7f1;
-      --panel: rgba(255, 252, 247, 0.82);
-      --line: rgba(32, 42, 56, 0.1);
-      --text: #1f2733;
-      --muted: #61707f;
-      --navy: #1f3149;
-      --teal: #0f8d84;
-      --orange: #d87346;
-      --shadow: 0 28px 80px rgba(27, 40, 58, 0.12);
-      --max: 1240px;
-      --radius-xl: 36px;
-      --radius-lg: 28px;
-      --radius-md: 22px;
+      --bg: #f7f1e7;
+      --paper: rgba(255, 251, 245, 0.8);
+      --paper-strong: rgba(255, 252, 248, 0.92);
+      --line: rgba(31, 43, 59, 0.1);
+      --text: #1f2835;
+      --muted: #657382;
+      --navy: #1e3149;
+      --teal: #0f8f86;
+      --orange: #dc7a4d;
+      --shadow: 0 32px 80px rgba(31, 43, 59, 0.12);
+      --max-width: 1240px;
+      --radius-xl: 42px;
+      --radius-lg: 30px;
+      --radius-md: 24px;
     }
 
     * {
@@ -35,9 +35,9 @@
       color: var(--text);
       font-family: "Space Grotesk", "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(15, 141, 132, 0.12), transparent 24%),
-        radial-gradient(circle at 85% 10%, rgba(216, 115, 70, 0.14), transparent 20%),
-        linear-gradient(180deg, #f8f3eb 0%, #f3eadb 48%, #f9f6f0 100%);
+        radial-gradient(circle at top left, rgba(15, 143, 134, 0.12), transparent 24%),
+        radial-gradient(circle at 86% 12%, rgba(220, 122, 77, 0.16), transparent 18%),
+        linear-gradient(180deg, #faf6ef 0%, #f3e8d8 52%, #faf8f2 100%);
       min-height: 100vh;
     }
 
@@ -45,13 +45,13 @@
       content: "";
       position: fixed;
       inset: 0;
+      z-index: -1;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(31, 49, 73, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(31, 49, 73, 0.035) 1px, transparent 1px);
-      background-size: 46px 46px;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 88%);
-      z-index: -1;
+        linear-gradient(rgba(30, 49, 73, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 49, 73, 0.028) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 86%);
     }
 
     a {
@@ -60,17 +60,17 @@
     }
 
     .page {
-      width: min(calc(100% - 48px), var(--max));
+      width: min(calc(100% - 56px), var(--max-width));
       margin: 0 auto;
-      padding: 28px 0 88px;
+      padding: 28px 0 96px;
     }
 
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
-      padding: 8px 0 30px;
+      gap: 20px;
+      padding: 8px 0 34px;
     }
 
     .brand {
@@ -79,17 +79,17 @@
       gap: 16px;
     }
 
-    .mark {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
-      color: #fff8f2;
+      color: #fff9f2;
       font-family: "Fraunces", serif;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       background: linear-gradient(135deg, var(--navy), var(--teal));
-      box-shadow: 0 18px 34px rgba(15, 141, 132, 0.22);
+      box-shadow: 0 18px 38px rgba(15, 143, 134, 0.22);
     }
 
     .brand-title {
@@ -103,41 +103,41 @@
       font-size: 0.92rem;
     }
 
-    .nav-links {
+    .nav {
       display: flex;
       gap: 14px;
-      flex-wrap: wrap;
     }
 
-    .pill,
+    .nav-link,
     .cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       padding: 14px 22px;
       border-radius: 999px;
-      border: 1px solid rgba(31, 49, 73, 0.12);
+      border: 1px solid rgba(30, 49, 73, 0.12);
       background: rgba(255, 255, 255, 0.58);
       backdrop-filter: blur(10px);
       transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
 
-    .pill:hover,
+    .nav-link:hover,
     .cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(31, 49, 73, 0.12);
-      border-color: rgba(15, 141, 132, 0.32);
+      box-shadow: 0 16px 32px rgba(31, 43, 59, 0.12);
+      border-color: rgba(15, 143, 134, 0.28);
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 54px;
-      border-radius: 44px;
+      min-height: calc(100vh - 124px);
+      padding: 64px 62px;
+      border-radius: 48px;
       border: 1px solid var(--line);
       background:
-        linear-gradient(135deg, rgba(255, 253, 248, 0.94), rgba(255, 246, 235, 0.82)),
-        linear-gradient(120deg, rgba(15, 141, 132, 0.08), rgba(216, 115, 70, 0.08));
+        linear-gradient(135deg, rgba(255, 252, 248, 0.95), rgba(255, 245, 233, 0.84)),
+        linear-gradient(120deg, rgba(15, 143, 134, 0.08), rgba(220, 122, 77, 0.08));
       box-shadow: var(--shadow);
     }
 
@@ -150,19 +150,28 @@
     }
 
     .hero::before {
-      width: 320px;
-      height: 320px;
-      right: -90px;
-      top: -120px;
-      background: radial-gradient(circle, rgba(15, 141, 132, 0.16), transparent 68%);
+      width: 380px;
+      height: 380px;
+      right: -120px;
+      top: -130px;
+      background: radial-gradient(circle, rgba(15, 143, 134, 0.15), transparent 68%);
     }
 
     .hero::after {
-      width: 280px;
-      height: 280px;
-      left: -110px;
-      bottom: -150px;
-      background: radial-gradient(circle, rgba(216, 115, 70, 0.16), transparent 70%);
+      width: 320px;
+      height: 320px;
+      left: -120px;
+      bottom: -180px;
+      background: radial-gradient(circle, rgba(220, 122, 77, 0.16), transparent 70%);
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.72fr);
+      gap: 56px;
+      align-items: end;
+      min-height: 100%;
     }
 
     .eyebrow {
@@ -170,32 +179,24 @@
       align-items: center;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(15, 141, 132, 0.1);
-      color: #0c665f;
+      background: rgba(15, 143, 134, 0.1);
+      color: #0e6961;
       font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .hero-grid {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
-      gap: 48px;
-      align-items: end;
+      letter-spacing: 0.05em;
     }
 
     h1 {
-      margin: 20px 0 22px;
-      max-width: 9.5ch;
+      margin: 22px 0 24px;
+      max-width: 8.8ch;
       font-family: "Fraunces", serif;
-      font-size: clamp(4rem, 6vw, 6.2rem);
-      line-height: 1.02;
-      letter-spacing: -0.045em;
+      font-size: clamp(4.7rem, 7vw, 7.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
     }
 
     .hero-copy {
-      max-width: 58ch;
+      max-width: 34rem;
       color: var(--muted);
       font-size: 1.08rem;
       line-height: 1.95;
@@ -204,38 +205,28 @@
     .hero-actions {
       display: flex;
       gap: 16px;
-      flex-wrap: wrap;
       margin-top: 34px;
+      flex-wrap: wrap;
     }
 
     .cta.primary {
       color: white;
       border-color: transparent;
       background: linear-gradient(135deg, var(--navy), var(--teal));
-      box-shadow: 0 18px 36px rgba(15, 141, 132, 0.2);
+      box-shadow: 0 20px 40px rgba(15, 143, 134, 0.2);
     }
 
-    .hero-side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .side-card,
-    .module,
-    .path-card,
-    .entry-card {
+    .hero-note {
+      align-self: center;
+      padding: 30px 30px 34px;
       border-radius: var(--radius-lg);
       border: 1px solid var(--line);
-      background: var(--panel);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 40px rgba(31, 49, 73, 0.08);
+      background: var(--paper);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 44px rgba(31, 43, 59, 0.08);
     }
 
-    .side-card {
-      padding: 24px 24px 26px;
-    }
-
-    .kicker {
+    .hero-note .label {
       color: var(--muted);
       font-size: 0.82rem;
       font-weight: 700;
@@ -243,154 +234,66 @@
       text-transform: uppercase;
     }
 
-    .side-card strong {
+    .hero-note strong {
       display: block;
-      margin: 14px 0 10px;
-      font-size: 1.5rem;
-      line-height: 1.25;
+      margin: 16px 0 12px;
+      font-size: 1.7rem;
+      line-height: 1.2;
+      font-weight: 700;
     }
 
-    .side-card p {
+    .hero-note p {
       margin: 0;
       color: var(--muted);
       line-height: 1.85;
     }
 
-    .terminal {
-      overflow: hidden;
-      border-radius: 24px;
-      background: #112031;
-      color: #dbe6ef;
-    }
-
-    .terminal-bar {
-      display: flex;
-      gap: 8px;
-      padding: 14px 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .dot.red { background: #ff7d71; }
-    .dot.gold { background: #f1bf58; }
-    .dot.green { background: #4fd4a4; }
-
-    .terminal pre {
-      margin: 0;
-      padding: 20px 22px 24px;
-      font-size: 0.96rem;
-      line-height: 1.9;
-      overflow-x: auto;
-      font-family: "IBM Plex Mono", Consolas, monospace;
-    }
-
     .section {
-      margin-top: 88px;
+      margin-top: 84px;
     }
 
     .section-head {
-      display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
-      gap: 36px;
-      align-items: start;
-      margin-bottom: 30px;
+      max-width: 48rem;
+      margin-bottom: 28px;
     }
 
     .section-head h2 {
-      margin: 0;
+      margin: 0 0 14px;
       font-family: "Fraunces", serif;
-      font-size: clamp(2.2rem, 3.2vw, 3.4rem);
-      line-height: 1.05;
+      font-size: clamp(2.4rem, 3.4vw, 4rem);
+      line-height: 1.02;
       letter-spacing: -0.04em;
     }
 
     .section-head p {
       margin: 0;
-      max-width: 62ch;
       color: var(--muted);
       font-size: 1.02rem;
       line-height: 1.9;
     }
 
-    .modules {
+    .highlights {
       display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
     }
 
-    .module {
-      display: grid;
-      grid-template-columns: 220px minmax(0, 1fr);
-      gap: 34px;
-      padding: 28px 30px;
+    .highlight,
+    .entry-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: var(--paper-strong);
+      box-shadow: 0 18px 44px rgba(31, 43, 59, 0.08);
     }
 
-    .module-label {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .module-chip {
-      width: fit-content;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(31, 49, 73, 0.08);
-      color: var(--navy);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .module-label h3 {
-      margin: 0;
-      font-size: 1.45rem;
-      line-height: 1.28;
-    }
-
-    .module-body p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.9;
-      font-size: 1rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .tag {
-      padding: 9px 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(31, 49, 73, 0.08);
-      background: rgba(255, 255, 255, 0.68);
-      color: var(--navy);
-      font-size: 0.88rem;
-    }
-
-    .path-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .path-card {
-      padding: 26px 24px;
+    .highlight {
+      padding: 28px 28px 30px;
       min-height: 220px;
     }
 
-    .step {
-      width: 38px;
-      height: 38px;
+    .highlight .index {
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
       border-radius: 50%;
@@ -400,12 +303,13 @@
       margin-bottom: 22px;
     }
 
-    .path-card h3 {
+    .highlight h3 {
       margin: 0 0 12px;
-      font-size: 1.18rem;
+      font-size: 1.28rem;
+      line-height: 1.25;
     }
 
-    .path-card p {
+    .highlight p {
       margin: 0;
       color: var(--muted);
       line-height: 1.85;
@@ -415,11 +319,12 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
+      margin-top: 30px;
     }
 
     .entry-card {
       padding: 28px 28px 30px;
-      min-height: 260px;
+      min-height: 240px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -429,23 +334,31 @@
     .entry-top {
       display: flex;
       justify-content: space-between;
-      gap: 18px;
       align-items: center;
+      gap: 16px;
+    }
+
+    .entry-label {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .entry-arrow {
       width: 48px;
       height: 48px;
-      border-radius: 50%;
       display: grid;
       place-items: center;
-      background: rgba(31, 49, 73, 0.08);
+      border-radius: 50%;
+      background: rgba(30, 49, 73, 0.08);
       font-size: 1.15rem;
     }
 
     .entry-card h3 {
       margin: 0 0 12px;
-      font-size: 1.52rem;
+      font-size: 1.5rem;
       line-height: 1.2;
     }
 
@@ -458,18 +371,16 @@
     .footer {
       margin-top: 72px;
       padding-top: 28px;
-      border-top: 1px solid rgba(31, 49, 73, 0.1);
+      border-top: 1px solid rgba(30, 49, 73, 0.1);
       display: flex;
       justify-content: space-between;
       gap: 16px;
       color: var(--muted);
     }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1120px) {
       .hero-grid,
-      .section-head,
-      .module,
-      .path-grid,
+      .highlights,
       .entries {
         grid-template-columns: 1fr;
       }
@@ -480,15 +391,15 @@
   <div class="page">
     <header class="topbar">
       <div class="brand">
-        <div class="mark">DY</div>
+        <div class="brand-mark">DY</div>
         <div>
           <div class="brand-title">DaoYuan</div>
-          <div class="brand-sub">CampusJarvis code showcase</div>
+          <div class="brand-sub">CampusJarvis showcase</div>
         </div>
       </div>
-      <nav class="nav-links" aria-label="Quick links">
-        <a class="pill" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">GitHub Repo</a>
-        <a class="pill" href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">Project Dashboard</a>
+      <nav class="nav" aria-label="Quick links">
+        <a class="nav-link" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">GitHub Repo</a>
+        <a class="nav-link" href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">Project Dashboard</a>
       </nav>
     </header>
 
@@ -496,14 +407,12 @@
       <section class="hero">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow">CampusJarvis / GitHub Pages</div>
+            <div class="eyebrow">CampusJarvis / Product Poster</div>
             <h1>把校园信息收口成一个可对话入口。</h1>
             <div class="hero-copy">
-              DaoYuan 展示的是 CampusJarvis 当前最核心的三段工程：
-              <strong>decision</strong> 负责决策与检索，
-              <strong>data_clean</strong> 负责清洗与入库，
-              <strong>if_land_web-fusion</strong> 负责用户资料、DDL、课表与网页交互。
-              这个首页不再堆信息，而是用更宽松的节奏把代码结构和产品方向讲清楚。
+              DaoYuan 展示的不是一堆分散功能，而是一种更自然的校园信息使用方式。
+              它把通知、DDL、课表、个人偏好和聊天入口放进同一个界面里，
+              让学生不再先猜“该去哪个网站”，而是先直接提出问题。
             </div>
             <div class="hero-actions">
               <a class="cta primary" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">查看 GitHub 仓库</a>
@@ -511,141 +420,58 @@
             </div>
           </div>
 
-          <div class="hero-side">
-            <div class="side-card">
-              <div class="kicker">Current Focus</div>
-              <strong>聊天入口、数据清洗、用户画像三层已经接起来了。</strong>
-              <p>这不是只放概念图的 landing page，而是从真实仓库目录和已有接口往上提炼出来的工程展示页。</p>
-            </div>
-
-            <div class="terminal">
-              <div class="terminal-bar">
-                <span class="dot red"></span>
-                <span class="dot gold"></span>
-                <span class="dot green"></span>
-              </div>
-              <pre><code>python3 -m decision respond test_user "最近有什么适合我的竞赛？"
-python -m data_clean process-jwc-db-batch --limit 3 --json
-POST /api/chat
-POST /api/chat/clear</code></pre>
-            </div>
-          </div>
+          <aside class="hero-note">
+            <div class="label">What it feels like</div>
+            <strong>像一个统一的校园入口，而不是又一个零散工具页。</strong>
+            <p>首页只负责建立第一印象：清楚、克制、有气质。真正的细节留给仓库和运行中的项目去承接。</p>
+          </aside>
         </div>
       </section>
 
       <section class="section">
         <div class="section-head">
-          <h2>Three Core Modules</h2>
-          <p>首页内容直接按仓库里的三块主目录展开，不再用密集统计卡片抢空间。每一块只保留职责、作用和少量关键文件，阅读节奏会明显松很多。</p>
+          <h2>Three Things It Tries To Fix</h2>
+          <p>第二屏只保留很轻的卖点，不再解释内部工程。访问者应该一眼知道它想解决什么，而不是被实现细节拖慢节奏。</p>
         </div>
 
-        <div class="modules">
-          <article class="module">
-            <div class="module-label">
-              <div class="module-chip">Decision</div>
-              <h3>从问题到响应路径</h3>
-            </div>
-            <div class="module-body">
-              <p>`engine.py`、`retriever.py`、`ranking.py`、`tool_router.py` 和 `service.py` 组成决策层主干。这里负责判断用户问题该走检索、排序、工具直达，还是补全画像后再继续回答。</p>
-              <div class="tags">
-                <span class="tag">engine.py</span>
-                <span class="tag">retriever.py</span>
-                <span class="tag">tool_router.py</span>
-                <span class="tag">FastAPI</span>
-              </div>
-            </div>
+        <div class="highlights">
+          <article class="highlight">
+            <div class="index">1</div>
+            <h3>统一入口</h3>
+            <p>把原本分散在通知页、公众号、教务入口和个人日程里的信息，收束到同一个使用面里。</p>
           </article>
-
-          <article class="module">
-            <div class="module-label">
-              <div class="module-chip">Data Clean</div>
-              <h3>从原始来源到结构化记录</h3>
-            </div>
-            <div class="module-body">
-              <p>`pipeline.py` 把 `jwc_db_loader.py`、`wechat_db_loader.py`、`document_normalizer.py`、`rule_validator.py` 和 `sql_sink.py` 串起来，覆盖读取、抽取、校验、状态跟踪和最终入库。</p>
-              <div class="tags">
-                <span class="tag">JWC DB</span>
-                <span class="tag">WeChat DB</span>
-                <span class="tag">State Store</span>
-                <span class="tag">SQL Sink</span>
-              </div>
-            </div>
+          <article class="highlight">
+            <div class="index">2</div>
+            <h3>个性化筛选</h3>
+            <p>不是把所有内容原样堆给所有人，而是更关注“什么和你有关、现在什么值得看”。</p>
           </article>
-
-          <article class="module">
-            <div class="module-label">
-              <div class="module-chip">Web Fusion</div>
-              <h3>把资料、DDL、课表和聊天页接到一起</h3>
-            </div>
-            <div class="module-body">
-              <p>`user_info_update/app.py`、`decision_bridge.py` 和静态页面文件承接前端体验层。这里面已经落了画像维护、DDL 管理、今日简报、聊天窗口和后端决策接入，不只是样式壳子。</p>
-              <div class="tags">
-                <span class="tag">/api/chat</span>
-                <span class="tag">decision_bridge.py</span>
-                <span class="tag">profile</span>
-                <span class="tag">schedule</span>
-              </div>
-            </div>
+          <article class="highlight">
+            <div class="index">3</div>
+            <h3>可直接使用</h3>
+            <p>聊天、DDL、课表和用户画像不再彼此割裂，而是被组织成一个更顺手的交互入口。</p>
           </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>One Clear Flow</h2>
-          <p>把复杂链路压成四段就够了。这样页面会更像作品集，而不是说明书。</p>
-        </div>
-
-        <div class="path-grid">
-          <article class="path-card">
-            <div class="step">1</div>
-            <h3>Capture</h3>
-            <p>公众号、教务数据、网页输入和用户资料先进入同一条处理链，不再各自分散。</p>
-          </article>
-          <article class="path-card">
-            <div class="step">2</div>
-            <h3>Normalize</h3>
-            <p>清洗层把原始文本变成可校验、可检索、可继续排序的结构化记录。</p>
-          </article>
-          <article class="path-card">
-            <div class="step">3</div>
-            <h3>Reason</h3>
-            <p>决策层结合用户画像、候选事件和工具入口，决定最合适的响应路线。</p>
-          </article>
-          <article class="path-card">
-            <div class="step">4</div>
-            <h3>Respond</h3>
-            <p>网页层把回答、DDL、课表和工具直达落进同一界面，真正面向学生使用。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>Open Entrypoints</h2>
-          <p>最后只留两个明确出口：一个去看代码，一个去看项目当前外部展示面。页面会更干净，动作也更清楚。</p>
         </div>
 
         <div class="entries">
           <a class="entry-card" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">
             <div class="entry-top">
-              <div class="kicker">Repository</div>
+              <div class="entry-label">Repository</div>
               <div class="entry-arrow">↗</div>
             </div>
             <div>
               <h3>RichardHu6666 / DaoYuan</h3>
-              <p>直接进入公开仓库，查看 `decision`、`data_clean` 和 `if_land_web-fusion` 的真实文件与工程结构。</p>
+              <p>想看代码、目录和真实实现，直接进入公开仓库。这里承接工程细节，而不是把它们提前堆在首页里。</p>
             </div>
           </a>
 
           <a class="entry-card" href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">
             <div class="entry-top">
-              <div class="kicker">Dashboard</div>
+              <div class="entry-label">Dashboard</div>
               <div class="entry-arrow">↗</div>
             </div>
             <div>
               <h3>CampusJarvis Project Dashboard</h3>
-              <p>打开当前项目 dashboard，直接看到在线服务入口和项目外部展示面。</p>
+              <p>想看项目当前的外部展示面，就直接打开 dashboard。首页在这里把动作收得很简单，只留下最明确的两个去处。</p>
             </div>
           </a>
         </div>
@@ -653,8 +479,8 @@ POST /api/chat/clear</code></pre>
     </main>
 
     <footer class="footer">
-      <div>Built for GitHub Pages, mapped from real CampusJarvis code.</div>
-      <div>DaoYuan / 2026</div>
+      <div>Built for GitHub Pages.</div>
+      <div>DaoYuan / CampusJarvis / 2026</div>
     </footer>
   </div>
 </body>
