@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Runtime and generated artifacts
+*.log
+*.sqlite
+*.sqlite3
+decision/reports/
+data_clean/runtime/*.sqlite3
+data_clean/runtime/logs/
+data_clean/runtime/raw_cache/
+
+# Local backup files
+*.bak
+*.tmp
+*.before_demo

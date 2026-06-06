@@ -1,0 +1,74 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Campus Jarvis Plugin",
+    "version": "0.1.1",
+    "description": "Campus Jarvis 校园信息智能助手插件。用于通过自然语言查询校园通知、竞赛、讲座、DDL、办事入口和个性化推荐。"
+  },
+  "servers": [
+    {
+      "url": "https://director-multimedia-headlines-tear.trycloudflare.com/rokid/plugin"
+    }
+  ],
+  "paths": {
+    "/ask": {
+      "post": {
+        "operationId": "askCampusJarvis",
+        "summary": "向 Campus Jarvis 提问",
+        "description": "接收用户自然语言问题，返回 Campus Jarvis 的回答。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "用户自然语言问题"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "description": "可选，Campus Jarvis 用户 UUID"
+                  }
+                }
+              },
+              "example": {
+                "query": "今天有什么 DDL？"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Campus Jarvis 回答",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "answer": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "engine": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

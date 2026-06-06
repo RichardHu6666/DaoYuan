@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Campus Jarvis 用户配置</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="loginOverlay" class="login-overlay hidden">
+      <section class="login-panel" aria-label="账号登录">
+        <p class="eyebrow">Campus Jarvis</p>
+        <h1>账号登录</h1>
+        <p class="login-copy">直接打开网站时请输入网页账号。从 QQ bot 跳转的链接会自动进入，不需要登录。</p>
+        <label>
+          <span>账号</span>
+          <input id="accountInput" type="text" autocomplete="username" placeholder="例如：yuqingchen" />
+        </label>
+        <button id="accountLoginBtn" class="button primary" type="button">进入</button>
+        <span id="loginState" class="login-state"></span>
+      </section>
+    </div>
+
+    <header class="app-header">
+      <div class="brand-block">
+        <p class="eyebrow">Campus Jarvis</p>
+        <h1>用户配置</h1>
+      </div>
+      <div class="header-actions">
+        <span id="identityState" class="state-pill">未登录</span>
+        <span id="saveState" class="state-pill saved">已同步</span>
+        <button id="accountSwitchBtn" class="button ghost" type="button">切换账号</button>
+      </div>
+    </header>
+    <main class="app-shell">
+      <aside class="profile-rail" aria-label="用户概览">
+        <div class="rail-section">
+          <span class="rail-label">当前账号</span>
+          <div class="account-stack">
+            <input id="accountName" class="id-input" type="text" readonly placeholder="未绑定网页账号" />
+            <div class="bind-row hidden">
+              <input id="accountBindInput" type="text" placeholder="绑定账号" />
+              <button id="accountBindBtn" class="mini-button" type="button">绑定</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="snapshot">
+          <div>
+            <span>待办</span>
+            <strong id="todoCount">0</strong>
+          </div>
+          <div>
+            <span>课程</span>
+            <strong id="courseCount">0</strong>
+          </div>
+          <div>
+            <span>推送</span>
+            <strong id="pushCount">0</strong>
+          </div>
+        </div>
+
+        <div class="next-card">
+          <span class="rail-label">最近事项</span>
+          <strong id="nextDeadlineTitle">暂无</strong>
+          <span id="nextDeadlineTime">待添加</span>
+        </div>
+
+        <div class="profile-score-card">
+          <div class="score-heading">
+            <span class="rail-label">画像完整度</span>
+            <strong id="profileScore">0%</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="profileProgress"></span>
+          </div>
+          <p id="profileHint">补全专业、兴趣和推送偏好后，Jarvis 的建议会更准。</p>
+        </div>
+
+        <div class="today-card">
+          <span class="rail-label">今日行动</span>
+          <div id="todayActionList" class="today-action-list"></div>
+        </div>
+
+        <div class="system-card">
+          <span class="rail-label">系统状态</span>
+          <strong id="apiState">检查中</strong>
+          <span id="apiStateDetail">正在连接融合版接口</span>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <nav class="tabs" aria-label="配置分类">
+          <button class="tab-button active" type="button" data-tab="chat">对话助手</button>
+          <button class="tab-button" type="button" data-tab="basic">基本信息</button>
+          <button class="tab-button" type="button" data-tab="todos">待办事项</button>
+          <button class="tab-button" type="button" data-tab="schedule">课表信息</button>
+          <button class="tab-button" type="button" data-tab="push">推送信息</button>
+        </nav>
+
+        <form id="settingsForm" autocomplete="off">
+          <input id="userId" type="hidden" />
+
+          <section class="tab-panel active" data-panel="chat">
+            <div class="chat-shell">
+              <div class="panel-heading chat-heading">
+              <div>
+                <p class="eyebrow">web_context_table / chat</p>
+                <h2>校园智能助手</h2>
+              </div>
+              <div class="panel-actions">
+                <button id="briefBtn" class="button secondary" type="button">生成今日简报</button>
+                <button id="clearChatBtn" class="button ghost" type="button">清空对话</button>
+                <span id="chatHint" class="panel-chip saved">网页会话</span>
+              </div>
+            </div>
+              <div class="assistant-dashboard">
+                <section>
+                  <span>当前用户</span>
+                  <strong id="chatIdentityCard">未登录</strong>
+                </section>
+                <section>
+                  <span>今日重点</span>
+                  <strong id="chatFocusCard">暂无待办</strong>
+                </section>
+                <section>
+                  <span>资料完整度</span>
+                  <strong id="chatProfileCard">0%</strong>
+                </section>
+              </div>
+              <div class="quick-prompts" aria-label="快捷问题">
+                <button type="button" data-prompt="我是谁">我是谁</button>
+                <button type="button" data-prompt="今天有什么DDL">今天有什么 DDL</button>
+                <button type="button" data-prompt="有什么推送">有什么推送</button>
+              </div>
+              <article id="briefPanel" class="brief-panel hidden">
+                <div>
+                  <p class="eyebrow">Daily Brief</p>
+                  <h3>今日简报</h3>
+                </div>
+                <p id="briefText"></p>
+              </article>
+              <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+              <div class="chat-composer">
+                <textarea id="chatInput" rows="2" placeholder="问一句，比如：我是谁？今天有什么DDL？有什么推送？"></textarea>
+                <button id="chatSendBtn" class="button primary" type="button">发送</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="tab-panel" data-panel="basic">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">users / user_profiles</p>
+                <h2>基本信息</h2>
+              </div>
+              <div class="panel-actions">
+                <span id="basicState" class="panel-chip">浏览</span>
+                <button id="basicEditBtn" class="button secondary" type="button">编辑</button>
+                <button id="basicCancelBtn" class="button ghost hidden" type="button">取消</button>
+                <button id="basicSaveBtn" class="button primary hidden" type="button">保存</button>
+              </div>
+            </div>
+
+            <div class="field-grid three">
+              <label>
+                <span>昵称</span>
+                <input id="nickname" data-basic-editable name="nickname" type="text" placeholder="例如：小林" disabled />
+              </label>
+              <label>
+                <span>真实姓名</span>
+                <input data-basic-editable name="real_name" type="text" placeholder="可留空" disabled />
+              </label>
+              <label>
+                <span>性别</span>
+                <select data-basic-editable name="gender" disabled>
+                  <option value="">未填写</option>
+                  <option value="男">男</option>
+                  <option value="女">女</option>
+                  <option value="其他">其他</option>
+                </select>
+              </label>
+              <label>
+                <span>生日</span>
+                <input data-basic-editable name="birthday" type="date" disabled />
+              </label>
+              <label>
+                <span>学校</span>
+                <input data-basic-editable name="school" type="text" value="东南大学" disabled />
+              </label>
+              <label>
+                <span>校区</span>
+                <select data-basic-editable name="campus" disabled>
+                  <option value="">未填写</option>
+                  <option value="九龙湖">九龙湖</option>
+                  <option value="四牌楼">四牌楼</option>
+                  <option value="丁家桥">丁家桥</option>
+                </select>
+              </label>
+              <label>
+                <span>学院</span>
+                <input data-basic-editable name="college" type="text" placeholder="例如：计算机科学与工程学院" disabled />
+              </label>
+              <label>
+                <span>专业</span>
+                <input data-basic-editable name="major" type="text" placeholder="例如：软件工程" disabled />
+              </label>
+              <label>
+                <span>年级</span>
+                <input data-basic-editable name="grade" type="text" placeholder="例如：大二 / 2024级" disabled />
+              </label>
+            </div>
+
+            <div class="field-grid two wide">
+              <label>
+                <span>兴趣方向</span>
+                <textarea data-basic-editable name="interests" rows="3" placeholder="人工智能, 医学影像, 机器人" disabled></textarea>
+              </label>
+              <label>
+                <span>目标</span>
+                <textarea data-basic-editable name="goals" rows="3" placeholder="科研, 保研, 竞赛" disabled></textarea>
+              </label>
+              <label class="span-two">
+                <span>个人简介</span>
+                <textarea data-basic-editable name="personal_description" rows="4" placeholder="学习方向、近期状态、需要系统记住的信息" disabled></textarea>
+              </label>
+              <label class="span-two">
+                <span>希望系统的回复人设</span>
+                <textarea data-basic-editable name="assistant_persona" rows="4" placeholder="例如：简洁、直接、像学长学姐一样给建议" disabled></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="tab-panel" data-panel="todos">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">user_deadlines</p>
+                <h2>待办事项</h2>
+              </div>
+            </div>
+            <div id="todoList" class="item-list"></div>
+            <button id="addTodoBtn" class="add-tile" type="button" aria-label="添加待办">
+              <span>+</span>
+              <strong>添加待办</strong>
+            </button>
+          </section>
+
+          <section class="tab-panel" data-panel="schedule">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">course_schedules</p>
+                <h2>课表信息</h2>
+              </div>
+              <div class="panel-actions">
+                <button id="importCourseBtn" class="button secondary" type="button">导入课表</button>
+                <input id="courseImportInput" class="hidden" type="file" accept=".csv,.xls,.xlsx" />
+              </div>
+            </div>
+
+            <div class="schedule-wrap" aria-label="一周课表">
+              <div id="scheduleGrid" class="schedule-grid"></div>
+            </div>
+
+            <div id="courseList" class="item-list compact-list"></div>
+            <button id="addCourseBtn" class="add-tile" type="button" aria-label="添加课程">
+              <span>+</span>
+              <strong>添加课程</strong>
+            </button>
+          </section>
+
+          <section class="tab-panel" data-panel="push">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">user_push_settings</p>
+                <h2>推送信息</h2>
+              </div>
+            </div>
+            <div class="preset-row" aria-label="常用推送模板">
+              <button type="button" data-push-preset="竞赛提醒">竞赛提醒</button>
+              <button type="button" data-push-preset="讲座推荐">讲座推荐</button>
+              <button type="button" data-push-preset="学院通知">学院通知</button>
+              <button type="button" data-push-preset="DDL 催办">DDL 催办</button>
+            </div>
+            <div id="pushList" class="item-list"></div>
+            <button id="addPushBtn" class="add-tile" type="button" aria-label="添加推送">
+              <span>+</span>
+              <strong>添加推送</strong>
+            </button>
+          </section>
+        </form>
+      </section>
+    </main>
+
+    <template id="todoTemplate">
+      <article class="config-item todo-item" data-kind="todo">
+        <div class="item-summary">
+          <button class="item-main" type="button">
+            <span class="item-title">待办条目</span>
+            <span class="item-meta">点击查看详情</span>
+          </button>
+          <div class="item-actions">
+            <button class="mini-button complete-item" type="button">完成</button>
+            <button class="mini-button edit-item" type="button">编辑</button>
+            <button class="icon-button danger remove-item" type="button" title="删除待办" aria-label="删除待办">x</button>
+          </div>
+        </div>
+        <input data-field="deadline_id" type="hidden" />
+        <div class="item-detail">
+          <div class="detail-read"></div>
+          <div class="edit-fields">
+            <div class="field-grid three compact">
+              <label class="span-two">
+                <span>名称</span>
+                <input data-field="title" type="text" required />
+              </label>
+              <label>
+                <span>类别</span>
+                <input data-field="category" type="text" placeholder="作业 / 考试 / 科研" />
+              </label>
+              <label>
+                <span>开始时间</span>
+                <input data-field="start_time" type="datetime-local" />
+              </label>
+              <label>
+                <span>结束时间</span>
+                <input data-field="deadline_time" type="datetime-local" required />
+              </label>
+              <label>
+                <span>状态</span>
+                <select data-field="status">
+                  <option value="pending">进行中</option>
+                  <option value="done">已完成</option>
+                  <option value="cancelled">已取消</option>
+                </select>
+              </label>
+              <div class="priority-field span-three">
+                <span>重要程度</span>
+                <div class="priority-group" data-field="priority" role="radiogroup" aria-label="重要程度">
+                  <button data-value="1" type="button">1 最高</button>
+                  <button data-value="2" type="button">2 较高</button>
+                  <button data-value="3" type="button">3 普通</button>
+                  <button data-value="4" type="button">4 较低</button>
+                  <button data-value="5" type="button">5 最低</button>
+                </div>
+              </div>
+              <label class="span-three">
+                <span>详细描述</span>
+                <textarea data-field="description" rows="3"></textarea>
+              </label>
+            </div>
+            <div class="item-edit-actions">
+              <button class="button ghost cancel-item" type="button">取消</button>
+              <button class="button primary save-item" type="button">保存</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <template id="courseTemplate">
+      <article class="config-item course-item" data-kind="course">
+        <div class="item-summary">
+          <button class="item-main" type="button">
+            <span class="item-title">课程</span>
+            <span class="item-meta">点击查看详情</span>
+          </button>
+          <div class="item-actions">
+            <button class="mini-button edit-item" type="button">编辑</button>
+            <button class="icon-button danger remove-item" type="button" title="删除课程" aria-label="删除课程">x</button>
+          </div>
+        </div>
+        <input data-field="course_id" type="hidden" />
+        <input data-field="local_id" type="hidden" />
+        <div class="item-detail">
+          <div class="detail-read"></div>
+          <div class="edit-fields">
+            <div class="field-grid four compact">
+              <label class="span-two">
+                <span>课程名</span>
+                <input data-field="course_name" type="text" required />
+              </label>
+              <label>
+                <span>星期</span>
+                <select data-field="day_of_week">
+                  <option value="1">周一</option>
+                  <option value="2">周二</option>
+                  <option value="3">周三</option>
+                  <option value="4">周四</option>
+                  <option value="5">周五</option>
+                  <option value="6">周六</option>
+                  <option value="7">周日</option>
+                </select>
+              </label>
+              <label>
+                <span>颜色</span>
+                <select data-field="color">
+                  <option value="blue">蓝</option>
+                  <option value="green">绿</option>
+                  <option value="amber">橙</option>
+                  <option value="rose">红</option>
+                  <option value="violet">紫</option>
+                </select>
+              </label>
+              <label>
+                <span>开始节次</span>
+                <input data-field="start_section" type="number" min="1" max="13" required />
+              </label>
+              <label>
+                <span>结束节次</span>
+                <input data-field="end_section" type="number" min="1" max="13" required />
+              </label>
+              <label>
+                <span>老师</span>
+                <input data-field="teacher" type="text" />
+              </label>
+              <label>
+                <span>地点</span>
+                <input data-field="location" type="text" />
+              </label>
+              <label class="span-two">
+                <span>周次</span>
+                <input data-field="weeks" type="text" placeholder="1-16周 / 单周 / 双周" />
+              </label>
+              <label class="span-two">
+                <span>备注</span>
+                <input data-field="note" type="text" />
+              </label>
+            </div>
+            <div class="item-edit-actions">
+              <button class="button ghost cancel-item" type="button">取消</button>
+              <button class="button primary save-item" type="button">保存</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <template id="pushTemplate">
+      <article class="config-item push-item" data-kind="push">
+        <div class="item-summary">
+          <button class="item-main" type="button">
+            <span class="item-title">推送内容</span>
+            <span class="item-meta">点击查看详情</span>
+          </button>
+          <div class="item-actions">
+            <button class="mini-button edit-item" type="button">编辑</button>
+            <button class="icon-button danger remove-item" type="button" title="删除推送" aria-label="删除推送">x</button>
+          </div>
+        </div>
+        <input data-field="push_id" type="hidden" />
+        <div class="item-detail">
+          <div class="detail-read"></div>
+          <div class="edit-fields">
+            <div class="field-grid three compact">
+              <label>
+                <span>类型</span>
+                <select data-field="type">
+                  <option value="custom">自定义文本</option>
+                  <option value="interest">感兴趣新闻</option>
+                </select>
+              </label>
+              <label class="span-two">
+                <span>标题</span>
+                <input data-field="title" type="text" required />
+              </label>
+              <label class="span-three">
+                <span>推送内容 / 兴趣关键词</span>
+                <textarea data-field="content" rows="3" placeholder="科研讲座, 竞赛报名, 奖学金"></textarea>
+              </label>
+              <label>
+                <span>推送方式</span>
+                <select data-field="frequency">
+                  <option value="daily">每天</option>
+                  <option value="weekly">每周</option>
+                  <option value="date">指定日期</option>
+                </select>
+              </label>
+              <label class="push-date-field">
+                <span>指定日期</span>
+                <input data-field="date" type="date" />
+              </label>
+              <div class="weekday-field span-three push-weekdays-field">
+                <span>每周周几</span>
+                <div class="weekday-group" data-field="weekdays">
+                  <button data-value="1" type="button">周一</button>
+                  <button data-value="2" type="button">周二</button>
+                  <button data-value="3" type="button">周三</button>
+                  <button data-value="4" type="button">周四</button>
+                  <button data-value="5" type="button">周五</button>
+                  <button data-value="6" type="button">周六</button>
+                  <button data-value="7" type="button">周日</button>
+                </div>
+              </div>
+              <div class="push-time-field span-three">
+                <span>推送时间</span>
+                <div class="push-time-list" data-field="times"></div>
+                <button class="time-add-button" type="button" aria-label="新增推送时间">+</button>
+              </div>
+            </div>
+            <div class="item-edit-actions">
+              <button class="button ghost cancel-item" type="button">取消</button>
+              <button class="button primary save-item" type="button">保存</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
