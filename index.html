@@ -3,47 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DaoYuan | CampusJarvis Code Showcase</title>
-  <meta name="description" content="DaoYuan 是 CampusJarvis 的代码展示页，汇总 decision、data_clean 与 if_land_web-fusion 三块核心工程。">
+  <title>DaoYuan | CampusJarvis</title>
+  <meta name="description" content="DaoYuan 是 CampusJarvis 的 GitHub Pages 首页，展示 decision、data_clean 与 if_land_web-fusion 三块核心代码。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6efe5;
-      --bg-soft: #fbf7f0;
-      --paper: rgba(255, 252, 246, 0.82);
-      --ink: #1e2430;
-      --muted: #5f6773;
-      --line: rgba(32, 42, 56, 0.12);
-      --teal: #0c8a82;
-      --teal-deep: #0a5a57;
-      --orange: #d76b3c;
-      --gold: #e0b04f;
-      --navy: #21324a;
-      --shadow: 0 24px 80px rgba(35, 43, 58, 0.14);
-      --radius-xl: 32px;
-      --radius-lg: 24px;
-      --radius-md: 18px;
-      --max-width: 1180px;
+      --bg: #f5efe4;
+      --bg-soft: #fbf7f1;
+      --panel: rgba(255, 252, 247, 0.82);
+      --line: rgba(32, 42, 56, 0.1);
+      --text: #1f2733;
+      --muted: #61707f;
+      --navy: #1f3149;
+      --teal: #0f8d84;
+      --orange: #d87346;
+      --shadow: 0 28px 80px rgba(27, 40, 58, 0.12);
+      --max: 1240px;
+      --radius-xl: 36px;
+      --radius-lg: 28px;
+      --radius-md: 22px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      color: var(--ink);
+      color: var(--text);
       font-family: "Space Grotesk", "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(12, 138, 130, 0.14), transparent 28%),
-        radial-gradient(circle at 85% 12%, rgba(215, 107, 60, 0.18), transparent 24%),
-        linear-gradient(180deg, #f8f3ea 0%, #f5ecdf 52%, #f9f6ef 100%);
+        radial-gradient(circle at top left, rgba(15, 141, 132, 0.12), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(216, 115, 70, 0.14), transparent 20%),
+        linear-gradient(180deg, #f8f3eb 0%, #f3eadb 48%, #f9f6f0 100%);
       min-height: 100vh;
     }
 
@@ -51,12 +45,12 @@
       content: "";
       position: fixed;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(33, 50, 74, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(33, 50, 74, 0.04) 1px, transparent 1px);
-      background-size: 38px 38px;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 88%);
       pointer-events: none;
+      background-image:
+        linear-gradient(rgba(31, 49, 73, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 49, 73, 0.035) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 88%);
       z-index: -1;
     }
 
@@ -65,202 +59,212 @@
       text-decoration: none;
     }
 
-    .shell {
-      width: min(calc(100% - 32px), var(--max-width));
+    .page {
+      width: min(calc(100% - 48px), var(--max));
       margin: 0 auto;
-      padding: 28px 0 72px;
+      padding: 28px 0 88px;
     }
 
     .topbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 16px 0 26px;
+      align-items: center;
+      gap: 24px;
+      padding: 8px 0 30px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
+    }
+
+    .mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #fff8f2;
+      font-family: "Fraunces", serif;
+      font-size: 1.15rem;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      box-shadow: 0 18px 34px rgba(15, 141, 132, 0.22);
+    }
+
+    .brand-title {
       font-weight: 700;
       letter-spacing: 0.02em;
     }
 
-    .brand-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      color: #fff8f0;
-      background:
-        linear-gradient(135deg, var(--navy), var(--teal)),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
-      box-shadow: 0 16px 32px rgba(10, 90, 87, 0.24);
-      font-family: "Fraunces", serif;
-      font-size: 1.15rem;
+    .brand-sub {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    .top-links {
+    .nav-links {
       display: flex;
+      gap: 14px;
       flex-wrap: wrap;
-      gap: 12px;
     }
 
-    .top-links a,
+    .pill,
     .cta {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
+      justify-content: center;
+      padding: 14px 22px;
       border-radius: 999px;
-      border: 1px solid rgba(33, 50, 74, 0.12);
-      background: rgba(255, 255, 255, 0.56);
+      border: 1px solid rgba(31, 49, 73, 0.12);
+      background: rgba(255, 255, 255, 0.58);
       backdrop-filter: blur(10px);
-      transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
 
-    .top-links a:hover,
+    .pill:hover,
     .cta:hover {
       transform: translateY(-2px);
-      border-color: rgba(12, 138, 130, 0.35);
-      box-shadow: 0 14px 30px rgba(16, 28, 45, 0.12);
+      box-shadow: 0 16px 30px rgba(31, 49, 73, 0.12);
+      border-color: rgba(15, 141, 132, 0.32);
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      border-radius: 40px;
+      padding: 54px;
+      border-radius: 44px;
+      border: 1px solid var(--line);
       background:
-        linear-gradient(135deg, rgba(255, 252, 246, 0.92), rgba(255, 246, 234, 0.76)),
-        linear-gradient(120deg, rgba(12, 138, 130, 0.12), rgba(215, 107, 60, 0.08));
-      border: 1px solid rgba(33, 50, 74, 0.12);
+        linear-gradient(135deg, rgba(255, 253, 248, 0.94), rgba(255, 246, 235, 0.82)),
+        linear-gradient(120deg, rgba(15, 141, 132, 0.08), rgba(216, 115, 70, 0.08));
       box-shadow: var(--shadow);
-      padding: 34px;
     }
 
-    .hero::after,
-    .hero::before {
+    .hero::before,
+    .hero::after {
       content: "";
       position: absolute;
       border-radius: 50%;
-      filter: blur(10px);
-      opacity: 0.7;
+      pointer-events: none;
     }
 
     .hero::before {
-      width: 240px;
-      height: 240px;
-      right: -80px;
-      top: -70px;
-      background: radial-gradient(circle, rgba(12, 138, 130, 0.22), transparent 70%);
+      width: 320px;
+      height: 320px;
+      right: -90px;
+      top: -120px;
+      background: radial-gradient(circle, rgba(15, 141, 132, 0.16), transparent 68%);
     }
 
     .hero::after {
-      width: 260px;
-      height: 260px;
+      width: 280px;
+      height: 280px;
       left: -110px;
-      bottom: -100px;
-      background: radial-gradient(circle, rgba(215, 107, 60, 0.18), transparent 72%);
-    }
-
-    .hero-grid {
-      position: relative;
-      display: grid;
-      gap: 28px;
-      grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.9fr);
+      bottom: -150px;
+      background: radial-gradient(circle, rgba(216, 115, 70, 0.16), transparent 70%);
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(12, 138, 130, 0.1);
-      color: var(--teal-deep);
-      font-size: 0.92rem;
+      background: rgba(15, 141, 132, 0.1);
+      color: #0c665f;
+      font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+      gap: 48px;
+      align-items: end;
     }
 
     h1 {
-      margin: 18px 0 14px;
+      margin: 20px 0 22px;
+      max-width: 9.5ch;
       font-family: "Fraunces", serif;
-      font-size: clamp(2.8rem, 6vw, 5.3rem);
-      line-height: 0.96;
-      letter-spacing: -0.04em;
-      max-width: 10.5ch;
+      font-size: clamp(4rem, 6vw, 6.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
     }
 
-    .hero p {
-      margin: 0;
-      max-width: 62ch;
+    .hero-copy {
+      max-width: 58ch;
       color: var(--muted);
-      font-size: 1.06rem;
-      line-height: 1.8;
+      font-size: 1.08rem;
+      line-height: 1.95;
     }
 
     .hero-actions {
       display: flex;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 26px;
+      margin-top: 34px;
     }
 
     .cta.primary {
       color: white;
       border-color: transparent;
       background: linear-gradient(135deg, var(--navy), var(--teal));
-      box-shadow: 0 18px 36px rgba(10, 90, 87, 0.22);
+      box-shadow: 0 18px 36px rgba(15, 141, 132, 0.2);
     }
 
-    .cta.secondary {
-      background: rgba(255, 255, 255, 0.65);
-    }
-
-    .hero-notes {
+    .hero-side {
       display: grid;
-      gap: 14px;
-      align-content: start;
+      gap: 18px;
     }
 
-    .glass-card,
-    .module-card,
-    .stat-card,
-    .flow-card,
-    .link-card {
-      background: var(--paper);
+    .side-card,
+    .module,
+    .path-card,
+    .entry-card {
+      border-radius: var(--radius-lg);
       border: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 18px 34px rgba(33, 50, 74, 0.08);
+      background: var(--panel);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(31, 49, 73, 0.08);
     }
 
-    .signal-card {
-      border-radius: 28px;
-      padding: 22px;
+    .side-card {
+      padding: 24px 24px 26px;
     }
 
-    .signal-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
+    .kicker {
       color: var(--muted);
-      margin-bottom: 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .side-card strong {
+      display: block;
+      margin: 14px 0 10px;
+      font-size: 1.5rem;
+      line-height: 1.25;
+    }
+
+    .side-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
     }
 
     .terminal {
-      border-radius: 24px;
       overflow: hidden;
-      background: #132132;
-      color: #d8e8f0;
+      border-radius: 24px;
+      background: #112031;
+      color: #dbe6ef;
     }
 
-    .terminal-top {
+    .terminal-bar {
       display: flex;
-      align-items: center;
       gap: 8px;
       padding: 14px 16px;
       background: rgba(255, 255, 255, 0.05);
@@ -273,365 +277,218 @@
       border-radius: 50%;
     }
 
-    .dot.red { background: #ff7c6b; }
-    .dot.gold { background: #f0bf58; }
-    .dot.green { background: #4fd3a4; }
+    .dot.red { background: #ff7d71; }
+    .dot.gold { background: #f1bf58; }
+    .dot.green { background: #4fd4a4; }
 
     .terminal pre {
       margin: 0;
-      padding: 18px 18px 22px;
+      padding: 20px 22px 24px;
+      font-size: 0.96rem;
+      line-height: 1.9;
       overflow-x: auto;
-      font-size: 0.94rem;
-      line-height: 1.75;
-      font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+      font-family: "IBM Plex Mono", Consolas, monospace;
     }
 
     .section {
-      margin-top: 28px;
-      padding: 10px 0 0;
+      margin-top: 88px;
     }
 
     .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 30px;
     }
 
     .section-head h2 {
       margin: 0;
       font-family: "Fraunces", serif;
-      font-size: clamp(1.9rem, 3.4vw, 3rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(2.2rem, 3.2vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
     }
 
     .section-head p {
       margin: 0;
-      max-width: 54ch;
+      max-width: 62ch;
       color: var(--muted);
-      line-height: 1.8;
+      font-size: 1.02rem;
+      line-height: 1.9;
     }
 
-    .stats-grid,
-    .modules-grid,
-    .links-grid {
+    .modules {
       display: grid;
-      gap: 16px;
+      gap: 22px;
     }
 
-    .stats-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .module {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 34px;
+      padding: 28px 30px;
     }
 
-    .stat-card {
-      border-radius: var(--radius-lg);
-      padding: 22px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -10% -36% 38%;
-      height: 90px;
-      background: radial-gradient(circle, rgba(12, 138, 130, 0.14), transparent 68%);
-      pointer-events: none;
-    }
-
-    .stat-value {
-      font-family: "Fraunces", serif;
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 0.96rem;
-      line-height: 1.6;
-    }
-
-    .modules-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .module-card {
-      border-radius: 28px;
-      padding: 24px;
-      min-height: 100%;
+    .module-label {
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .module-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 44px rgba(33, 50, 74, 0.12);
-    }
-
-    .module-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: start;
+      gap: 12px;
     }
 
     .module-chip {
+      width: fit-content;
       padding: 7px 12px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      background: rgba(31, 49, 73, 0.08);
+      color: var(--navy);
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      background: rgba(33, 50, 74, 0.08);
-      color: var(--navy);
     }
 
-    .module-card h3 {
+    .module-label h3 {
       margin: 0;
       font-size: 1.45rem;
-      line-height: 1.2;
+      line-height: 1.28;
     }
 
-    .module-card p {
+    .module-body p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.9;
+      font-size: 1rem;
     }
 
-    .tag-row {
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 18px;
     }
 
     .tag {
-      padding: 8px 12px;
+      padding: 9px 13px;
       border-radius: 999px;
+      border: 1px solid rgba(31, 49, 73, 0.08);
       background: rgba(255, 255, 255, 0.68);
-      border: 1px solid rgba(33, 50, 74, 0.08);
+      color: var(--navy);
       font-size: 0.88rem;
-      color: var(--navy);
     }
 
-    .flow-wrap {
+    .path-grid {
       display: grid;
-      gap: 16px;
-      grid-template-columns: 1.15fr 0.85fr;
-    }
-
-    .flow-card,
-    .link-card {
-      border-radius: 28px;
-      padding: 24px;
-    }
-
-    .flow-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .flow-step {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 16px 0;
-      border-top: 1px solid rgba(33, 50, 74, 0.08);
-    }
-
-    .flow-step:first-child {
-      border-top: 0;
-      padding-top: 0;
-    }
-
-    .flow-index {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      color: white;
-      background: linear-gradient(135deg, var(--orange), var(--teal));
-    }
-
-    .flow-step h4,
-    .link-card h3 {
-      margin: 0 0 6px;
-      font-size: 1.06rem;
-    }
-
-    .flow-step p,
-    .link-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.72;
-    }
-
-    .mini-grid {
-      display: grid;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .mini-card {
-      padding: 18px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.62);
-      border: 1px solid rgba(33, 50, 74, 0.08);
-    }
-
-    .mini-card strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-      color: var(--navy);
-      letter-spacing: 0.03em;
-    }
-
-    .links-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .link-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 250px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .link-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -15% -25% auto;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      opacity: 0.65;
-      background: radial-gradient(circle, rgba(224, 176, 79, 0.22), transparent 66%);
-      pointer-events: none;
+    .path-card {
+      padding: 26px 24px;
+      min-height: 220px;
     }
 
-    .link-meta {
+    .step {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--orange), var(--teal));
+      margin-bottom: 22px;
+    }
+
+    .path-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.18rem;
+    }
+
+    .path-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .entries {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .entry-card {
+      padding: 28px 28px 30px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .entry-top {
       display: flex;
       justify-content: space-between;
       gap: 18px;
       align-items: center;
     }
 
-    .link-kicker {
-      color: var(--teal-deep);
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .link-arrow {
+    .entry-arrow {
       width: 48px;
       height: 48px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: rgba(33, 50, 74, 0.08);
-      font-size: 1.2rem;
+      background: rgba(31, 49, 73, 0.08);
+      font-size: 1.15rem;
+    }
+
+    .entry-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.52rem;
+      line-height: 1.2;
+    }
+
+    .entry-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.9;
     }
 
     .footer {
-      margin-top: 34px;
-      padding: 24px 0 10px;
-      color: var(--muted);
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(31, 49, 73, 0.1);
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(33, 50, 74, 0.1);
+      color: var(--muted);
     }
 
-    .pulse {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .pulse::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 0 0 rgba(12, 138, 130, 0.4);
-      animation: ping 1.8s infinite;
-    }
-
-    @keyframes ping {
-      0% { box-shadow: 0 0 0 0 rgba(12, 138, 130, 0.38); }
-      70% { box-shadow: 0 0 0 12px rgba(12, 138, 130, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(12, 138, 130, 0); }
-    }
-
-    @media (max-width: 1024px) {
+    @media (max-width: 1080px) {
       .hero-grid,
-      .flow-wrap,
-      .modules-grid,
-      .stats-grid,
-      .links-grid {
+      .section-head,
+      .module,
+      .path-grid,
+      .entries {
         grid-template-columns: 1fr;
-      }
-
-      h1 {
-        max-width: 12ch;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .shell {
-        width: min(calc(100% - 20px), var(--max-width));
-        padding-top: 18px;
-      }
-
-      .hero {
-        padding: 24px;
-        border-radius: 28px;
-      }
-
-      .topbar {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .section-head {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .link-card {
-        min-height: auto;
       }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
+  <div class="page">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark">DY</div>
+        <div class="mark">DY</div>
         <div>
-          <div>DaoYuan</div>
-          <div style="color: var(--muted); font-size: 0.9rem; font-weight: 500;">CampusJarvis code showcase</div>
+          <div class="brand-title">DaoYuan</div>
+          <div class="brand-sub">CampusJarvis code showcase</div>
         </div>
       </div>
-      <nav class="top-links" aria-label="Quick links">
-        <a href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">GitHub Repo</a>
-        <a href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">Project Dashboard</a>
+      <nav class="nav-links" aria-label="Quick links">
+        <a class="pill" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">GitHub Repo</a>
+        <a class="pill" href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">Project Dashboard</a>
       </nav>
     </header>
 
@@ -639,35 +496,30 @@
       <section class="hero">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow">CampusJarvis / Code Landing Page</div>
-            <h1>把分散的校园信息，收口成一个可对话的入口。</h1>
-            <p>
-              DaoYuan 公开展示的是 CampusJarvis 的三段核心工程：决策层 <strong>decision</strong>、
-              清洗与入库链路 <strong>data_clean</strong>、以及用户资料与网页交互层
-              <strong>if_land_web-fusion</strong>。它不是单一爬虫，也不是孤立聊天页，而是一条从信息接入、
-              结构化沉淀到个性化响应的完整主链路。
-            </p>
+            <div class="eyebrow">CampusJarvis / GitHub Pages</div>
+            <h1>把校园信息收口成一个可对话入口。</h1>
+            <div class="hero-copy">
+              DaoYuan 展示的是 CampusJarvis 当前最核心的三段工程：
+              <strong>decision</strong> 负责决策与检索，
+              <strong>data_clean</strong> 负责清洗与入库，
+              <strong>if_land_web-fusion</strong> 负责用户资料、DDL、课表与网页交互。
+              这个首页不再堆信息，而是用更宽松的节奏把代码结构和产品方向讲清楚。
+            </div>
             <div class="hero-actions">
-              <a class="cta primary" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">
-                查看代码仓库
-              </a>
-              <a class="cta secondary" href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">
-                打开项目 Dashboard
-              </a>
+              <a class="cta primary" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">查看 GitHub 仓库</a>
+              <a class="cta" href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">打开项目 Dashboard</a>
             </div>
           </div>
 
-          <div class="hero-notes">
-            <div class="glass-card signal-card">
-              <div class="signal-title">Live Surface</div>
-              <div style="font-size: 1.55rem; font-weight: 700; margin-bottom: 8px;">Chat · Profile · DDL · Schedule</div>
-              <p style="font-size: 0.98rem;">
-                代码里已经落下了自然语言问答、画像维护、DDL 管理、课表导入、工具直达与网页聊天接口，不是概念草图。
-              </p>
+          <div class="hero-side">
+            <div class="side-card">
+              <div class="kicker">Current Focus</div>
+              <strong>聊天入口、数据清洗、用户画像三层已经接起来了。</strong>
+              <p>这不是只放概念图的 landing page，而是从真实仓库目录和已有接口往上提炼出来的工程展示页。</p>
             </div>
 
             <div class="terminal">
-              <div class="terminal-top">
+              <div class="terminal-bar">
                 <span class="dot red"></span>
                 <span class="dot gold"></span>
                 <span class="dot green"></span>
@@ -683,95 +535,56 @@ POST /api/chat/clear</code></pre>
 
       <section class="section">
         <div class="section-head">
-          <h2>Repository Surface</h2>
-          <p>
-            这个页面不是抽象介绍，而是按当前仓库实际结构组织内容。三块目录分别承担“决策与检索”“清洗与入库”“用户侧体验与融合”。
-          </p>
+          <h2>Three Core Modules</h2>
+          <p>首页内容直接按仓库里的三块主目录展开，不再用密集统计卡片抢空间。每一块只保留职责、作用和少量关键文件，阅读节奏会明显松很多。</p>
         </div>
 
-        <div class="stats-grid">
-          <article class="stat-card">
-            <div class="stat-value">21</div>
-            <div class="stat-label">`decision/` 顶层代码文件，承接检索、排序、工具路由与服务入口。</div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-value">24</div>
-            <div class="stat-label">`data_clean/data_clean/` 核心处理文件，覆盖 WeChat 与 JWC 两类主来源。</div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-value">7</div>
-            <div class="stat-label">网页交互静态资源文件，支持前端页面、OpenAPI 描述与演示入口。</div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-value">99</div>
-            <div class="stat-label">当前首轮公开代码文件数，已剔除运行缓存、日志、SQLite 产物和备份噪音。</div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>Core Modules</h2>
-          <p>
-            页面内容直接对应仓库中的真实文件名和职责边界，方便从展示页一路跳回工程实现。
-          </p>
-        </div>
-
-        <div class="modules-grid">
-          <article class="module-card">
-            <div class="module-top">
-              <div>
-                <div class="module-chip">Decision Layer</div>
-                <h3>把“问问题”变成可执行的响应路径</h3>
+        <div class="modules">
+          <article class="module">
+            <div class="module-label">
+              <div class="module-chip">Decision</div>
+              <h3>从问题到响应路径</h3>
+            </div>
+            <div class="module-body">
+              <p>`engine.py`、`retriever.py`、`ranking.py`、`tool_router.py` 和 `service.py` 组成决策层主干。这里负责判断用户问题该走检索、排序、工具直达，还是补全画像后再继续回答。</p>
+              <div class="tags">
+                <span class="tag">engine.py</span>
+                <span class="tag">retriever.py</span>
+                <span class="tag">tool_router.py</span>
+                <span class="tag">FastAPI</span>
               </div>
             </div>
-            <p>
-              `engine.py`、`retriever.py`、`ranking.py`、`tool_router.py` 与 `service.py` 组成决策层主干。
-              这里负责把用户问题拆成检索、排序、直达工具或补全画像等不同路线。
-            </p>
-            <div class="tag-row">
-              <span class="tag">engine.py</span>
-              <span class="tag">retriever.py</span>
-              <span class="tag">tool_router.py</span>
-              <span class="tag">FastAPI service</span>
+          </article>
+
+          <article class="module">
+            <div class="module-label">
+              <div class="module-chip">Data Clean</div>
+              <h3>从原始来源到结构化记录</h3>
+            </div>
+            <div class="module-body">
+              <p>`pipeline.py` 把 `jwc_db_loader.py`、`wechat_db_loader.py`、`document_normalizer.py`、`rule_validator.py` 和 `sql_sink.py` 串起来，覆盖读取、抽取、校验、状态跟踪和最终入库。</p>
+              <div class="tags">
+                <span class="tag">JWC DB</span>
+                <span class="tag">WeChat DB</span>
+                <span class="tag">State Store</span>
+                <span class="tag">SQL Sink</span>
+              </div>
             </div>
           </article>
 
-          <article class="module-card">
-            <div class="module-top">
-              <div>
-                <div class="module-chip">Data Cleaning</div>
-                <h3>把公众号和教务源变成可入库的统一记录</h3>
+          <article class="module">
+            <div class="module-label">
+              <div class="module-chip">Web Fusion</div>
+              <h3>把资料、DDL、课表和聊天页接到一起</h3>
+            </div>
+            <div class="module-body">
+              <p>`user_info_update/app.py`、`decision_bridge.py` 和静态页面文件承接前端体验层。这里面已经落了画像维护、DDL 管理、今日简报、聊天窗口和后端决策接入，不只是样式壳子。</p>
+              <div class="tags">
+                <span class="tag">/api/chat</span>
+                <span class="tag">decision_bridge.py</span>
+                <span class="tag">profile</span>
+                <span class="tag">schedule</span>
               </div>
-            </div>
-            <p>
-              `pipeline.py` 串起 `jwc_db_loader.py`、`wechat_db_loader.py`、`document_normalizer.py`、
-              `rule_validator.py`、`sql_sink.py` 等模块，覆盖读取、抽取、校验、状态追踪与入库。
-            </p>
-            <div class="tag-row">
-              <span class="tag">JWC DB</span>
-              <span class="tag">WeChat DB</span>
-              <span class="tag">State Store</span>
-              <span class="tag">SQL Sink</span>
-            </div>
-          </article>
-
-          <article class="module-card">
-            <div class="module-top">
-              <div>
-                <div class="module-chip">Web Fusion</div>
-                <h3>把画像、DDL、课表与聊天页收进同一界面</h3>
-              </div>
-            </div>
-            <p>
-              `user_info_update/app.py`、`decision_bridge.py` 与静态页面文件把前端交互和后端决策层连接起来，
-              支持个人资料维护、DDL 追踪、今日简报和网页聊天接口。
-            </p>
-            <div class="tag-row">
-              <span class="tag">/api/chat</span>
-              <span class="tag">decision_bridge.py</span>
-              <span class="tag">profile</span>
-              <span class="tag">schedule</span>
             </div>
           </article>
         </div>
@@ -779,63 +592,30 @@ POST /api/chat/clear</code></pre>
 
       <section class="section">
         <div class="section-head">
-          <h2>How The System Moves</h2>
-          <p>
-            从代码里能看出，这个项目最核心的价值不是“抓到网页”，而是把异构信息稳定穿过整条链路，最后落成面向学生的可用回答。
-          </p>
+          <h2>One Clear Flow</h2>
+          <p>把复杂链路压成四段就够了。这样页面会更像作品集，而不是说明书。</p>
         </div>
 
-        <div class="flow-wrap">
-          <article class="flow-card">
-            <div class="signal-title">Pipeline Narrative</div>
-            <div class="flow-list">
-              <div class="flow-step">
-                <div class="flow-index">1</div>
-                <div>
-                  <h4>Capture</h4>
-                  <p>来源进入系统前并不统一，代码里已经明确覆盖公众号文章、教务数据库记录以及网页侧用户资料与日程输入。</p>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-index">2</div>
-                <div>
-                  <h4>Normalize</h4>
-                  <p>`data_clean` 负责原文清理、字段抽取、去重与校验，让通知不只是原始文本，而是能继续排序和检索的结构化对象。</p>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-index">3</div>
-                <div>
-                  <h4>Reason</h4>
-                  <p>`decision` 根据用户画像、上下文、候选事件和工具入口选择路径，决定是“直接给入口”还是“整理后回答”。</p>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-index">4</div>
-                <div>
-                  <h4>Respond</h4>
-                  <p>`if_land_web-fusion` 把上述结果落到网页、聊天窗口和用户配置页，让课表、DDL、竞赛、讲座和办事入口在同一界面里汇合。</p>
-                </div>
-              </div>
-            </div>
+        <div class="path-grid">
+          <article class="path-card">
+            <div class="step">1</div>
+            <h3>Capture</h3>
+            <p>公众号、教务数据、网页输入和用户资料先进入同一条处理链，不再各自分散。</p>
           </article>
-
-          <article class="flow-card">
-            <div class="signal-title">Grounded In Code</div>
-            <div class="mini-grid">
-              <div class="mini-card">
-                <strong>Question Types</strong>
-                代码和说明里已经明确覆盖“最近有什么竞赛”“今天有什么 DDL”“课表是什么”“教务入口在哪里”等典型校园问题。
-              </div>
-              <div class="mini-card">
-                <strong>Operational Surface</strong>
-                决策层提供 CLI、长期服务与测试入口；清洗层提供单条、批量、重置、远端 LLM 准备等命令。
-              </div>
-              <div class="mini-card">
-                <strong>UX Connection</strong>
-                网页端不是单独演示页，它通过 `/api/chat`、`decision_bridge`、个人画像和课表导入机制与核心后端对接。
-              </div>
-            </div>
+          <article class="path-card">
+            <div class="step">2</div>
+            <h3>Normalize</h3>
+            <p>清洗层把原始文本变成可校验、可检索、可继续排序的结构化记录。</p>
+          </article>
+          <article class="path-card">
+            <div class="step">3</div>
+            <h3>Reason</h3>
+            <p>决策层结合用户画像、候选事件和工具入口，决定最合适的响应路线。</p>
+          </article>
+          <article class="path-card">
+            <div class="step">4</div>
+            <h3>Respond</h3>
+            <p>网页层把回答、DDL、课表和工具直达落进同一界面，真正面向学生使用。</p>
           </article>
         </div>
       </section>
@@ -843,36 +623,29 @@ POST /api/chat/clear</code></pre>
       <section class="section">
         <div class="section-head">
           <h2>Open Entrypoints</h2>
-          <p>
-            这两个入口分别面向代码协作和产品观感：一个看源码，一个看运行中的项目面。
-          </p>
+          <p>最后只留两个明确出口：一个去看代码，一个去看项目当前外部展示面。页面会更干净，动作也更清楚。</p>
         </div>
 
-        <div class="links-grid">
-          <a class="link-card" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">
-            <div class="link-meta">
-              <div class="link-kicker">Repository</div>
-              <div class="link-arrow">↗</div>
+        <div class="entries">
+          <a class="entry-card" href="https://github.com/RichardHu6666/DaoYuan" target="_blank" rel="noreferrer noopener">
+            <div class="entry-top">
+              <div class="kicker">Repository</div>
+              <div class="entry-arrow">↗</div>
             </div>
             <div>
               <h3>RichardHu6666 / DaoYuan</h3>
-              <p>
-                查看完整公开代码，直接进入 `decision`、`data_clean`、`if_land_web-fusion` 三块核心目录，
-                回到真实文件与工程实现。
-              </p>
+              <p>直接进入公开仓库，查看 `decision`、`data_clean` 和 `if_land_web-fusion` 的真实文件与工程结构。</p>
             </div>
           </a>
 
-          <a class="link-card" href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">
-            <div class="link-meta">
-              <div class="link-kicker">Dashboard</div>
-              <div class="link-arrow">↗</div>
+          <a class="entry-card" href="https://b1qjlru2bq403s60-6666.sc01-webservice.gpuhome.cc:8443/" target="_blank" rel="noreferrer noopener">
+            <div class="entry-top">
+              <div class="kicker">Dashboard</div>
+              <div class="entry-arrow">↗</div>
             </div>
             <div>
               <h3>CampusJarvis Project Dashboard</h3>
-              <p>
-                打开项目的在线 dashboard，直接看到运行中的服务面板和当前外部入口。页面设计上我把它作为“从代码走向产品”的第二个主按钮。
-              </p>
+              <p>打开当前项目 dashboard，直接看到在线服务入口和项目外部展示面。</p>
             </div>
           </a>
         </div>
@@ -880,8 +653,8 @@ POST /api/chat/clear</code></pre>
     </main>
 
     <footer class="footer">
-      <div class="pulse">Built for GitHub Pages, mapped from real CampusJarvis code.</div>
-      <div>DaoYuan / CampusJarvis / 2026</div>
+      <div>Built for GitHub Pages, mapped from real CampusJarvis code.</div>
+      <div>DaoYuan / 2026</div>
     </footer>
   </div>
 </body>
