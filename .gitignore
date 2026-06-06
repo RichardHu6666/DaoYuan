@@ -16,4 +16,4 @@ data_clean/runtime/raw_cache/
 # Local backup files
 *.bak
 *.tmp
-*.before_demo
+*.before_demo*
